@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_add_back.c                                  :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 14:24:25 by lex               #+#    #+#             */
-/*   Updated: 2022/10/16 17:48:53 by lex              ###   ########.fr       */
+/*   Created: 2022/10/15 14:29:06 by lex               #+#    #+#             */
+/*   Updated: 2022/10/15 14:38:58 by lex              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_add_back(t_list **alst, t_list *new)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	t_list	*tmp;
+	int		i;
 
-	tmp = *alst;
-	if (!new)
-		return ;
-	if (*alst != NULL)
+	i = 0;
+	while (src[i] != '\0')
 	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
+		dst[i] = src[i];
+		i++;
 	}
-	else
-		*alst = new;
+	dst[i] = '\0';
+	return (dst);
 }

@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_add_back.c                                  :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 14:24:25 by lex               #+#    #+#             */
-/*   Updated: 2022/10/16 17:48:53 by lex              ###   ########.fr       */
+/*   Created: 2022/10/24 11:22:14 by lex               #+#    #+#             */
+/*   Updated: 2022/10/24 11:22:31 by lex              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_add_back(t_list **alst, t_list *new)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_list	*tmp;
-
-	tmp = *alst;
-	if (!new)
-		return ;
-	if (*alst != NULL)
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-	else
-		*alst = new;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

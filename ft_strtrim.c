@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_add_back.c                                  :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 14:24:25 by lex               #+#    #+#             */
-/*   Updated: 2022/10/16 17:48:53 by lex              ###   ########.fr       */
+/*   Created: 2022/10/24 11:02:32 by lex               #+#    #+#             */
+/*   Updated: 2022/10/24 11:19:05 by lex              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_add_back(t_list **alst, t_list *new)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	t_list	*tmp;
+	size_t		size_s;
+	char		*newstring;
 
-	tmp = *alst;
-	if (!new)
-		return ;
-	if (*alst != NULL)
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-	else
-		*alst = new;
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size_s = ft_strlen(s1);
+	while (size_s && ft_strchr(set, s1[size_s]))
+		size_s--;
+	newstring = ft_substr((char*)s1, 0, size_s + 1);
+	return (newstring);
 }

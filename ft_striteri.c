@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_add_back.c                                  :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 14:24:25 by lex               #+#    #+#             */
-/*   Updated: 2022/10/16 17:48:53 by lex              ###   ########.fr       */
+/*   Created: 2022/10/24 11:19:39 by lex               #+#    #+#             */
+/*   Updated: 2022/10/24 11:19:46 by lex              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_add_back(t_list **alst, t_list *new)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	t_list	*tmp;
+	unsigned int	i;
 
-	tmp = *alst;
-	if (!new)
+	if (!s || !f)
 		return ;
-	if (*alst != NULL)
+	i = 0;
+	while (s[i])
 	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
+		f(i, s + i);
+		i++;
 	}
-	else
-		*alst = new;
 }
