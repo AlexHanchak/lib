@@ -6,7 +6,7 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:39:23 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/27 15:24:18 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:21:06 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		*ft_memset(void *str, int c, size_t len);
 
 void	ft_bzero(void *str, size_t n);
 
-void	*ft_memcpy(void *str, const void *src, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 void	*ft_memmove(void *dst, const void *src, size_t len);
 

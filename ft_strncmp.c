@@ -6,7 +6,7 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 22:20:57 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/27 15:21:23 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:15:58 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	size_t			i;
-	unsigned char	*s1;
-	unsigned char	*s2;
+	int				i;
+	unsigned char	*temps1;
+	unsigned char	*temps2;
 
-	s1 = (unsigned char *) str1;
-	s2 = (unsigned char *) str2;
 	i = 0;
-	if (n == 0)
-		return (0);
-	if (*s1 == '\0')
-		return (-(*s2));
-	if (*s2 == '\0')
-		return (*s1);
-	while (s1[i] != '\0' && s2[i] != '\0')
+	temps1 = (unsigned char *) str1;
+	temps2 = (unsigned char *) str2;
+	while ((size_t)i < n)
 	{
-		if (i == n -1 || s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+		if (temps1[i] != temps2[i])
+		{
+			if (temps1[i] == '\0')
+				return (-1);
+			if (temps2[i] == '\0')
+				return (1);
+			return (temps1[i] - temps2[i]);
+		}
+		if (temps1[i] == '\0')
+			break ;
 		i++;
 	}
-	return (s1[i] - s2[i]);
+	return (0);
 }
