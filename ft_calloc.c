@@ -6,7 +6,7 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:34:29 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/27 18:23:18 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:27:32 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,14 @@
 void	*ft_calloc(size_t count, size_t	size)
 {
 	char	*str;
-	size_t	i;
+	size_t	total_size;
 
-	i = 0;
-	if ((count <= 0 && size >= 0) || (count >= SIZE_MAX && size >= SIZE_MAX))
+	if (size > 0 && (SIZE_MAX / size) < count)
 		return (NULL);
-	str = (char *)malloc(count * size);
-	if (str)
-	{
-		while (i < count * size)
-		{
-			str[i] = 0;
-			i++;
-		}
-	}
-	return ((void *)str);
+	total_size = count * size;
+	str = malloc(total_size);
+	if (!str)
+		return (NULL);
+	ft_bzero(str, total_size);
+	return (str);
 }
