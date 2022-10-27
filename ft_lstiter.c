@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 19:15:50 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/24 18:04:07 by ohanchak         ###   ########.fr       */
+/*   Created: 2022/10/25 16:13:52 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/27 14:51:54 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int		i;
-	char	*dst;
-
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-		i++;
-	dst = (char *)malloc(sizeof(char) * (i + 1));
-	if (dst == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
+	if (!f)
 	{
-		dst[i] = f(i, s[i]);
-		i++;
+		return ;
 	}
-	dst[i] = '\0';
-	return (dst);
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

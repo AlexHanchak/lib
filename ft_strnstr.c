@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 15:04:45 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/23 18:59:59 by ohanchak         ###   ########.fr       */
+/*   Created: 2022/10/13 12:35:50 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/23 18:54:25 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dist, const char *src, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	len_src;
-	size_t	len_dst;
 	size_t	j;
+	char	*hayst;
+	char	*need;
 
-	len_dst = ft_strlen(dist);
-	len_src = ft_strlen(src);
-	i = len_dst;
-	if (dist == src)
-		return (0);
-	if (len != 0 && i < (len - 1))
+	hayst = (char *)haystack;
+	need = (char *)needle;
+	if (need[0] == '\0')
+		return (hayst);
+	i = 0;
+	while (hayst[i] != '\0')
 	{
 		j = 0;
-		while (i < (len - 1) && src[j] != '\0')
+		if (hayst[i] == need[0])
 		{
-			dist[i] = src[j];
-			i++;
-			j++;
+			while (hayst[i + j] == need[j] && (j + i) < len && need[j] != '\0')
+				j++;
+			if (need[j] == '\0')
+				return (&hayst[i]);
 		}
-		dist[i] = '\0';
+		i++;
 	}
-	if (len_dst > len)
-		return (len + len_src);
-	return (len_dst + len_src);
+	return (0);
 }

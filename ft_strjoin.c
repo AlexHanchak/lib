@@ -3,40 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 11:02:16 by lex               #+#    #+#             */
-/*   Updated: 2022/10/24 11:19:08 by lex              ###   ########.fr       */
+/*   Created: 2022/10/21 18:23:15 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/24 17:14:02 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strjoin(const char *s1, const char *s2)
+static char	*mk_result1(char const *s1, char *result)
 {
-        char    *sjoin;
-        size_t  size;
-        size_t  len1;
-        size_t  len2;
+	int	i;
 
-        if (s1 == 0 || s2 == 0)
-                return (0);
-        size = ft_strlen(s1) + ft_strlen(s2) + 1;
-        sjoin = malloc(size * sizeof(char));
-        if (sjoin == 0)
-                return (0);
-        len1 = 0;
-        while (len1 < ft_strlen(s1))
-        {
-                sjoin[len1] = s1[len1];
-                len1++;
-        }
-        len2 = 0;
-        while (len2 < ft_strlen(s2))
-        {
-                sjoin[len1 + len2] = s2[len2];
-                len2++;
-        }
-        sjoin[len1 + len2] = '\0';
-        return (sjoin);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	return (result);
+}
+
+static char	*mk_result2(char const *s2, char *result, int i)
+{
+	int	j;
+
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		result[i] = s2[j];
+		i++;
+		j++;
+	}
+	result[i] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*result;
+
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	result = (char *)malloc(sizeof(char) * (i + j + 1));
+	if (result == NULL)
+		return (NULL);
+	result = mk_result1(s1, result);
+	result = mk_result2(s2, result, i);
+	return (result);
 }

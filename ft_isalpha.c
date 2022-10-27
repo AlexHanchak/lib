@@ -1,14 +1,20 @@
-int ft_isalpha(int c)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 14:59:56 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/21 18:45:11 by ohanchak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
-    char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                      "abcdefghijklmnopqrstuvwxyz";
-    char *letter = alphabet;
-
-    while(*letter != '\0' && *letter != c)
-        ++letter;
-
-    if (*letter)
-        return 1;
-
-    return 0;
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }

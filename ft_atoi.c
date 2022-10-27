@@ -1,25 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 12:09:26 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/18 18:34:55 by ohanchak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "libft.h"
+
+int	ft_atoi(const char *str)
 {
-	int	nb;
-	int	cur;
-	int	is_negative;
+	int				i;
+	long long int	numb;
+	int				sign;
 
-	cur = 0;
-	nb = 0;
-	is_negative = 1;
-	while ((str[cur] >= 9 && str[cur] <= 13) || str[cur] == ' ')
-		cur++;
-	while (str[cur] == '+' || str[cur] == '-')
+	i = 0;
+	sign = 1;
+	numb = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[cur] == '-')
-			is_negative *= -1;
-		cur++;
+		numb = numb * 10 + (str[i] - '0');
+		if (numb < 0 && sign == -1 && numb != -2147483648)
+			return (0);
+		if (numb < 0 && sign == 1)
+			return (-1);
+		i++;
 	}
-	while (str[cur] >= 48 && str[cur] <= 57)
-	{
-		nb = nb * 10 + str[cur] - '0';
-		cur++;
-	}
-	return (nb * is_negative);
+	return (numb * sign);
 }

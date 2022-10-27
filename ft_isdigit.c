@@ -1,14 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 15:02:28 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/14 17:57:33 by ohanchak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "libft.h"
+
+int	ft_isdigit(int c)
 {
-    char digits[] = "0123456789";
-    char *numb = digits;
-
-    while(*numb != '\0' && *numb != c)
-        ++numb;
-
-    if (*numb)
-        return 1;
-
-    return 0;
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

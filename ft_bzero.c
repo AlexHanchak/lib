@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 19:15:50 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/24 18:04:07 by ohanchak         ###   ########.fr       */
+/*   Created: 2022/10/13 19:26:35 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/17 19:02:35 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_bzero(void *str, size_t n)
 {
-	int		i;
-	char	*dst;
-
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-		i++;
-	dst = (char *)malloc(sizeof(char) * (i + 1));
-	if (dst == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		dst[i] = f(i, s[i]);
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	ft_memset(str, '\0', n);
 }

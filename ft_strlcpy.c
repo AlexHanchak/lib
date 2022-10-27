@@ -1,24 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 12:35:45 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/19 14:49:28 by ohanchak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-unsigned int	ol_strlen(char *str)
-{
-	unsigned int	cur;
+#include "libft.h"
 
-	cur = 0;
-	while (str[cur] != 0)
-	{
-		cur++;
-	}
-	return (cur);
-}
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	unsigned int	cur;
 
 	if (size == 0)
-	{
-		return (ol_strlen(src));
-	}
+		return (ft_strlen(src));
 	cur = 0;
 	while (src[cur] != 0 && cur < (size - 1))
 	{
@@ -26,5 +25,5 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		cur++;
 	}
 	dest[cur] = 0;
-	return (ol_strlen(src));
+	return (ft_strlen(src));
 }

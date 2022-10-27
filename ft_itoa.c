@@ -3,60 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 11:17:26 by lex               #+#    #+#             */
-/*   Updated: 2022/10/24 11:19:04 by lex              ###   ########.fr       */
+/*   Created: 2022/10/24 17:33:50 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/10/24 17:59:27 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-int		len(long nb)
+static char	*do_min_max(int n)
 {
-	int		len;
-
-	len = 0;
-	if (nb < 0)
-	{
-		nb = nb * -1;
-		len++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		len++;
-	}
-	return (len);
-}
-
-char	*ft_itoa(int nb)
-{
-	char *str;
-	long	n;
+	char	*result;
 	int		i;
 
-	n = nb;
-	i = len(n);
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	i = 9;
+	result = (char *)malloc(sizeof(char) * 12);
+	if (result == NULL)
 		return (NULL);
-	str[i--] = '\0';
-	if (n == 0)
+	result[11] = '\0';
+	result[10] = '8';
+	n = n / 10;
+	n = -n;
+	while (i > 0)
 	{
-		str[0] = 48;
-		return (str);
-	}
-	if (n < 0)
-	{
-		str[0] = '-';
-		n = n * -1;
-	}
-	while (n > 0)
-	{
-		str[i] = 48 + (n % 10);
+		result[i] = n % 10 + '0';
 		n = n / 10;
 		i--;
 	}
-	return (str);
+	result[i] = '-';
+	return (result);
+}
+
+static char	*do_negative(int n)
+{
+	char	*result;
+	int		nb;
+	int		i;
+
+	n = -n;
+	nb = n;
+	i = 0;
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	result = (char *)malloc(sizeof(char) * (i + 2));
+	if (result == NULL)
+		return (NULL);
+	result[i + 1] = '\0';
+	while (i > 0)
+	{
+		result[i] = n % 10 + '0';
+		n = n / 10;
+		i--;
+	}
+	result[i] = '-';
+	return (result);
+}
+
+static char	*do_positive(int n)
+{
+	char	*result;
+	int		nb;
+	int		i;
+
+	nb = n;
+	i = 0;
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	result = (char *)malloc(sizeof(char) * (i + 1));
+	if (result == NULL)
+		return (NULL);
+	result[i] = '\0';
+	while (i > 0)
+	{
+		result[i - 1] = n % 10 + '0';
+		n = n / 10;
+		i--;
+	}
+	return (result);
+}
+
+static char	*do_null(void)
+{
+	char	*result;
+
+	result = (char *)malloc(sizeof(char) * 2);
+	if (result == NULL)
+		return (NULL);
+	result[0] = '0';
+	result[1] = '\0';
+	return (result);
+}
+
+char	*ft_itoa(int n)
+{
+	if (n == -2147483648)
+		return (do_min_max(n));
+	if (n < 0)
+		return (do_negative(n));
+	if (n > 0)
+		return (do_positive(n));
+	return (do_null());
 }
