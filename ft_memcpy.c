@@ -6,7 +6,7 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:57:09 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/28 16:02:09 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:20:29 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if ((!dst && !src) || (!dst || !src) && !n)
+	if ((!dst && !src) || ((!dst || !src) && !n))
 		return (dst);
 	while (n > 0)
 	{
 		n--;
-		*((unsigned char *)dst + n) = *((unsigned char *) src + n);
+		*((unsigned char *)dst + n) = *((unsigned char *)src + n);
 	}
 	return (dst);
 }
