@@ -6,7 +6,7 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:13:41 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/27 16:01:09 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:05:38 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*next;
 
 	current = *lst;
-	if (!current)
+	if (!lst || !del)
 	{
 		*lst = NULL;
 		return ;
