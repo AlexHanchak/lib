@@ -6,37 +6,33 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:35:50 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/28 15:50:25 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:34:19 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*hayst;
-	char	*need;
+	size_t	hcount;
+	size_t	ncount;
+	size_t	nlen;
 
-	hayst = (char *)haystack;
-	need = (char *)needle;
-	if (need[0] == '\0')
-		return (hayst);
-	i = 0;
-	while (hayst[i] != '\0')
+	hcount = 0;
+	nlen = 0;
+	while (needle[nlen])
+		nlen++;
+	if (!nlen)
+		return ((char *)haystack);
+	if (!len)
+		return (0);
+	while (haystack[hcount] && hcount + nlen <= len)
 	{
-		j = 0;
-		if (hayst[i] == need[0])
-		{
-			while (hayst[i + j] == need[j] && (j + i) < len && need[j] != '\0')
-				j++;
-			if (need[j] == '\0')
-				return (&hayst[i]);
-		}
-		i++;
+		ncount = 0;
+		while (haystack[hcount + ncount] == needle[ncount] && ncount < nlen)
+			if (++ncount == nlen)
+				return ((char *)&haystack[hcount]);
+		hcount++;
 	}
 	return (0);
 }
