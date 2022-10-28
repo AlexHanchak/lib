@@ -6,7 +6,7 @@
 #    By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 15:45:30 by ohanchak          #+#    #+#              #
-#    Updated: 2022/10/28 16:59:01 by ohanchak         ###   ########.fr        #
+#    Updated: 2022/10/28 17:34:25 by ohanchak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ bonus : $(OBJECT_BONUS)
 	cc -c -Wall -Wextra -Werror $^
 
 clean :
-	rm -f *.o
+	rm -f $(OBJECT) $(OBJECT_BONUS)
 
 fclean : clean
 	rm -f $(NAME)
