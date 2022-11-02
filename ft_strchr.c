@@ -6,7 +6,7 @@
 /*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:15:09 by ohanchak          #+#    #+#             */
-/*   Updated: 2022/10/23 17:55:15 by ohanchak         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:21:30 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ char	*ft_strchr(const char *arrch, int c)
 	while (str[i] != '\0')
 	{
 		if (str[i] == (char)c)
-		{
 			return (&str[i]);
-		}
 		i++;
 	}
 	return (NULL);
