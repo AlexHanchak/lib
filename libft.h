@@ -115,7 +115,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-void	ft_error(char *message, int exit_code);
+void	ft_message(char *message, int exit_code);
 
 void	ft_free(void **str);
 

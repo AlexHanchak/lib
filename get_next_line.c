@@ -47,7 +47,7 @@ static void	add_heap_to_static(char **s, char *buf)
 	}
 }
 
-static	int	ft_exit(char **line)
+static	int	fdf_terminate(char **line)
 {
 	*line = NULL;
 	return (0);
@@ -71,7 +71,7 @@ int	get_next_line(const int fd, char **line)
 		ret = read(fd, heap, BUFF_SIZE);
 	}
 	if (!s[fd] || s[fd][0] == '\0')
-		return (ft_exit(line));
+		return (fdf_terminate(line));
 	if (s[fd])
 		if (verify_new_line(&(s[fd]), line))
 			return (1);

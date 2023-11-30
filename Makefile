@@ -47,7 +47,7 @@ SOURCE = ft_isalpha.c \
 		 ft_putnbr_fd.c \
 		 get_next_line.c \
 		 ft_free.c \
-		 ft_error.c
+		 ft_message.c
 SOURCE_BONUS = ft_lstnew.c \
 			   ft_lstadd_front.c \
 			   ft_lstsize.c \
