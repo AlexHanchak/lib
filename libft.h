@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <string.h>
 
+# define BUFF_SIZE	(1)
+# define MAX_FD (1025)
+
 typedef struct s_list
 {
 	void			*content;
@@ -111,5 +114,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+void	ft_error(char *message, int exit_code);
+
+void	ft_free(void **str);
+
+int		get_next_line(const int fd, char **line);
 
 #endif
