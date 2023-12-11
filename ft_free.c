@@ -9,4 +9,5 @@ void	ft_free(void **str)
 		i++;
 	while (i >= 0)
 		free(str[i--]);
+	free(str);
 }
